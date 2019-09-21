@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button bDialog;
+    private Button bDialog, bMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +18,19 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         bDialog = findViewById(R.id.bDescription);
+        bMenu = findViewById(R.id.bMenu);
+
         bDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showOverview();
+            }
+        });
+
+        bMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, MenuActivity.class));
             }
         });
 

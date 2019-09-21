@@ -14,7 +14,7 @@ public class OverviewDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Overview")
                 .setMessage("This application enables the user to order food directly on the menu in" +
-                        "a restaurant to reduce wait time.")
+                        " a restaurant to reduce wait time.")
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
