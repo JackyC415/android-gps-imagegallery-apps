@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='cmpe277_lab2'
