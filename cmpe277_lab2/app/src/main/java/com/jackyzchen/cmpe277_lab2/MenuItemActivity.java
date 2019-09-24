@@ -1,5 +1,6 @@
 package com.jackyzchen.cmpe277_lab2;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,15 +15,16 @@ public class MenuItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_item);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Menu");
+
         imageView = findViewById(R.id.image_view);
 
-        getSupportActionBar().setTitle("Menu Items");
-
         Intent intent = getIntent();
-        int position = intent.getExtras().getInt("id");
+        int itemIndex = intent.getExtras().getInt("id");
 
         ImageAdapter imageAdapter = new ImageAdapter(this);
 
-        imageView.setImageResource(imageAdapter.imageArr[position]);
+        imageView.setImageResource(imageAdapter.imageArr[itemIndex]);
     }
 }

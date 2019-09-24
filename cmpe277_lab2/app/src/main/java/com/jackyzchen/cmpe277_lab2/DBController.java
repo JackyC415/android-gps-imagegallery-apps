@@ -9,14 +9,15 @@ import android.util.Log;
 
 public class DBController extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "OrderNow";
+    private static final String DATABASE_NAME = "order.db";
 
     private static final String TABLE_REGISTRATION = "registration_table";
+    private static final String TABLE = "test_table";
 
-    private static final String R_PID = "registration_pid";
-    private static final String R_USERNAME = "registration_username";
-    private static final String R_PASSWORD = "registration_password";
-    private static final String R_EMAIL = "registration_email";
+    private static final String R_PID = "r_pid";
+    private static final String R_USERNAME = "r_username";
+    private static final String R_PASSWORD = "r_password";
+    private static final String R_EMAIL = "r_email";
 
     public DBController(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -27,11 +28,11 @@ public class DBController extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         try {
-            sqLiteDatabase.execSQL("create table " + TABLE_REGISTRATION + " (R_PID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, R_USERNAME TEXT UNIQUE, R_PASSWORD TEXT NOT NULL, R_EMAIL TEXT UNIQUE)");
+            sqLiteDatabase.execSQL("create table " + TABLE_REGISTRATION + " (r_pid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, r_username TEXT UNIQUE, r_password TEXT NOT NULL, r_email TEXT UNIQUE)");
+            Log.d("TAG", "Table Created Successfully!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Log.d("TAG", "Tables Created Successfully!");
 
     }
 
@@ -39,7 +40,7 @@ public class DBController extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_REGISTRATION);
         onCreate(sqLiteDatabase);
-        Log.d("TAG", "Tables Dropped Successfully!!!");
+        Log.d("TAG", "Table Dropped Successfully!");
     }
 
 
@@ -52,7 +53,7 @@ public class DBController extends SQLiteOpenHelper {
         values.put(R_EMAIL, register.getEmail());
 
         sqLiteDatabase.insert(TABLE_REGISTRATION, null, values);
-        Log.d("TAG", "Registration Data Inserted Successfully!!!");
+        Log.d("TAG", "User Registered Successfully!");
         sqLiteDatabase.close();
     }
 }

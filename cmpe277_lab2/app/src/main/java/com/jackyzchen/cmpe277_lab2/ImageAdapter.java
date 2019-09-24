@@ -14,7 +14,7 @@ public class ImageAdapter extends BaseAdapter {
 
     public int[] imageArr = {
 
-            R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
+            R.drawable.sushim8,R.drawable.burger,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
             R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
             R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
             R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,

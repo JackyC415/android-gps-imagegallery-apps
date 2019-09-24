@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    //DBController dbController;
+    DBController dbController;
     private EditText rUsername;
     private EditText rPassword;
     private TextView rEmail;
@@ -25,6 +25,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        dbController = new DBController(RegisterActivity.this);
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Registration Page");
 
@@ -32,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
         rPassword = findViewById(R.id.rPassword);
         rEmail = findViewById(R.id.rEmail);
         bRegister = findViewById(R.id.bRegister);
-        //dbController = new DBController(RegisterActivity.this);
 
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,13 +44,12 @@ public class RegisterActivity extends AppCompatActivity {
                 final String email = rEmail.getText().toString();
 
                 if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(email)) {
+                    dbController.insertRegistration(new RegisterField(1, username, password, email));
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid field(s)!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                //dbController.insertRegistration(new RegistrationFields(1, username, password, email));
             }
 
         });

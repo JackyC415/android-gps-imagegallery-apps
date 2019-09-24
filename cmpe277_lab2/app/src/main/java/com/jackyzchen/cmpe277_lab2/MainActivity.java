@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,11 +19,14 @@ public class MainActivity extends AppCompatActivity {
     private TextView attempt;
     private Button login, register;
     private int loginAttempts = 0;
+    DBController dbController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dbController = new DBController(this);
 
         username = findViewById(R.id.eUsername);
         password = findViewById(R.id.ePassword);
@@ -34,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkCredential(username.getText().toString(), password.getText().toString());
+                checkCredential(username.getText().toString().toLowerCase(), password.getText().toString().toLowerCase());
             }
         });
 
@@ -47,9 +51,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public boolean emptyText(String user, String pass) {
+
+        boolean isEmpty = false;
+        if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)) {
+            isEmpty = true;
+        }
+        return isEmpty;
+    }
+
+    //ensure text isn't empty and login as admin (any password is fine)
     private void checkCredential(String user, String pass) {
 
-        if (user.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123456")) {
+
+        if(!emptyText(user,pass) && user.equalsIgnoreCase("admin")) {
             proceedToHomePage();
         } else {
             checkLoginAttempts();
@@ -57,17 +72,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void proceedToHomePage() {
-        //explicit intent
         String user = username.getText().toString();
         Intent intent = new Intent(this, HomeActivity.class);
-        //pass data between activities
         intent.putExtra(EXTRA_TEXT, user);
         startActivity(intent);
     }
 
     private void checkLoginAttempts (){
         loginAttempts++;
-        Toast.makeText(getApplicationContext(), "Incorrect credentials!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Invalid credentials!", Toast.LENGTH_LONG).show();
         attempt.setText("Attempt: " + loginAttempts);
 
         if (loginAttempts == 3) {
