@@ -1,6 +1,7 @@
 package com.jackyzchen.cmpe277_lab2;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -21,6 +22,9 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Home");
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bot_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);

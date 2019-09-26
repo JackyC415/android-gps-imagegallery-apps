@@ -1,5 +1,6 @@
 package com.jackyzchen.cmpe277_lab2;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,6 +19,9 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Menu");
 
         gridView = findViewById(R.id.grid_view);
         gridView.setAdapter(new ImageAdapter(this));

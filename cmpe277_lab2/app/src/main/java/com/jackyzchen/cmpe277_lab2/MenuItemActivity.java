@@ -16,7 +16,7 @@ public class MenuItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_item);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Menu");
+        actionBar.setTitle("Menu items");
 
         imageView = findViewById(R.id.image_view);
 

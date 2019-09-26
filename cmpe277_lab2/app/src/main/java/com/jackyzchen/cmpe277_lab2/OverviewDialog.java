@@ -13,8 +13,8 @@ public class OverviewDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Overview")
-                .setMessage("This application enables the user to order food directly on the menu in" +
-                        " a restaurant to reduce wait time.")
+                .setMessage("An app that enables user to view menu items directly on their mobile devices" +
+                        "to reduce wait time.")
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

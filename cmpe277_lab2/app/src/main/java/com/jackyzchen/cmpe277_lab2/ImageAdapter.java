@@ -14,12 +14,10 @@ public class ImageAdapter extends BaseAdapter {
 
     public int[] imageArr = {
 
-            R.drawable.sushim8,R.drawable.burger,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
-            R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
-            R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
-            R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
-            R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,
-            R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8
+            R.drawable.sushim8,R.drawable.burger,R.drawable.cake,R.drawable.cookie,R.drawable.donut,
+            R.drawable.drink0,R.drawable.drink1,R.drawable.drink2,R.drawable.chickenwings,R.drawable.crepes,
+            R.drawable.fries,R.drawable.pho,R.drawable.icecream,R.drawable.sushim8,R.drawable.sushim8,
+            R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8,R.drawable.sushim8
     };
 
     public ImageAdapter(Context context) {

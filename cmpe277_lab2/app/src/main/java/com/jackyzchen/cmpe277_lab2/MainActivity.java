@@ -1,5 +1,6 @@
 package com.jackyzchen.cmpe277_lab2;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
         dbController = new DBController(this);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Login");
+
         username = findViewById(R.id.eUsername);
         password = findViewById(R.id.ePassword);
         attempt = findViewById(R.id.tAttempt);
         login = findViewById(R.id.bLogin);
         register = findViewById(R.id.bRegister);
-
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,24 +54,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean emptyText(String user, String pass) {
+    //verify credential; exception: login as admin (any password is fine)
+    private void checkCredential(String user, String pass) {
+
+        String authorized = dbController.authenticate(user);
+        if(pass.equalsIgnoreCase(authorized) && !emptyInput(user,pass) || user.equalsIgnoreCase("admin")) {
+            proceedToHomePage();
+        } else {
+            checkLoginAttempts();
+        }
+    }
+
+    public boolean emptyInput(String user, String pass) {
 
         boolean isEmpty = false;
         if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)) {
             isEmpty = true;
         }
         return isEmpty;
-    }
-
-    //ensure text isn't empty and login as admin (any password is fine)
-    private void checkCredential(String user, String pass) {
-
-
-        if(!emptyText(user,pass) && user.equalsIgnoreCase("admin")) {
-            proceedToHomePage();
-        } else {
-            checkLoginAttempts();
-        }
     }
 
     private void proceedToHomePage() {

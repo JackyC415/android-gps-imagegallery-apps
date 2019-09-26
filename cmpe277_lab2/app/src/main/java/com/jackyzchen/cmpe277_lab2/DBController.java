@@ -2,6 +2,7 @@ package com.jackyzchen.cmpe277_lab2;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -55,5 +56,21 @@ public class DBController extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TABLE_REGISTRATION, null, values);
         Log.d("TAG", "User Registered Successfully!");
         sqLiteDatabase.close();
+    }
+
+    public String authenticate(String input) {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select R_USERNAME, R_PASSWORD from " + TABLE_REGISTRATION, null);
+        String username, password = "";
+        if (cursor.moveToFirst()) {
+            do {
+                username = cursor.getString(0);
+                if (username.equals(input)) {
+                    password = cursor.getString(1);
+                    break;
+                }
+            } while (cursor.moveToNext());
+        }
+        return password;
     }
 }
