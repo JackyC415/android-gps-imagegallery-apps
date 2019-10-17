@@ -41,14 +41,6 @@ public class GPSFragment extends FragmentActivity implements OnMapReadyCallback 
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
 
-    public GPSFragment() {
-        // Required empty public constructor
-    }
-
-    public static GPSFragment newInstance() {
-        return new GPSFragment();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,8 +113,8 @@ public class GPSFragment extends FragmentActivity implements OnMapReadyCallback 
         map = googleMap;
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng)
-                .title("I'm here.")
-                .snippet("snippet")
+                .title("Current Location")
+                .snippet("I'm here!!!")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,5));

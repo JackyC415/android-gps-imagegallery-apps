@@ -13,7 +13,6 @@ import com.example.viewpager.R;
 
 public class RecentsFragment extends Fragment {
 
-  private static final String TAG = "Recents";
 
   private PageViewModel pageViewModel;
 
@@ -32,7 +31,7 @@ public class RecentsFragment extends Fragment {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
-    pageViewModel.setIndex(TAG);
+    pageViewModel.setIndex("Search Results");
   }
 
   @Override

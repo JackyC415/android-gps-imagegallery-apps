@@ -16,7 +16,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
   @StringRes
   private static final int[] TAB_TITLES =
-      new int[] { R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3 };
+      new int[] { R.string.tab_text_1, R.string.tab_text_2 };
   private final Context mContext;
 
   public TabsPagerAdapter(Context context, FragmentManager fm) {
@@ -31,8 +31,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         return SpeedDialFragment.newInstance();
       case 1:
         return RecentsFragment.newInstance();
-      case 2:
-        return ContactsFragment.newInstance();
       default:
         return null;
     }
@@ -47,6 +45,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
   @Override
   public int getCount() {
     // Show 3 total pages.
-    return 3;
+    return 2;
   }
 }

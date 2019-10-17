@@ -13,7 +13,6 @@ import com.example.viewpager.R;
 
 public class SpeedDialFragment extends Fragment {
 
-  private static final String TAG = "SpeedDial";
 
   private PageViewModel pageViewModel;
 
@@ -32,7 +31,7 @@ public class SpeedDialFragment extends Fragment {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
-    pageViewModel.setIndex(TAG);
+    pageViewModel.setIndex("GPS");
   }
 
   @Override
