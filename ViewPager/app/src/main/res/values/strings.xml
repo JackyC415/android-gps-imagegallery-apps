@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ViewPager</string>
+
+    <string name="tab_text_1">Speed Dial</string>
+    <string name="tab_text_2">Recents</string>
+    <string name="tab_text_3">Contacts</string>
+    <string name="map_key" translatable="false">AIzaSyBy5e0cY3YZaeID02wkJWYnwh1I7kPMMOw</string>
+</resources>
