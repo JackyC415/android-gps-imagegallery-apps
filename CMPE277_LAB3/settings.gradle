@@ -1,2 +1,1 @@
 include ':app'
-rootProject.name='CMPE277_LAB3'
